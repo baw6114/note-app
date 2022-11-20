@@ -12,7 +12,7 @@ export const main = handler(async (event) => {
     // 'ExpressionAttributeValues' 위에 KeyConditionExpresion에 매칭되는 값을 정의
     // - ':userId': 'userId'의 값을 정의한다.
     ExpressionAttributeValues: {
-      ":userId": "123",
+      ":userId": event.requestContext.authorizer.iam.cognitoIdentity.identityId,
     },
   };
 

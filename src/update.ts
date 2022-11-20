@@ -8,7 +8,7 @@ export const main = handler(async (event) => {
     TableName: process.env.TABLE_NAME!,
     // 'Key' 수정하기 위해 수정해야 할 데이터의 Key를 정의
     Key: {
-      userId: "123", // 사용자 ID
+        userId: event.requestContext.authorizer.iam.cognitoIdentity.identityId, // 사용자 ID
       noteId: event.pathParameters.id, // 노트 ID
     },
     // 'UpdateExpression' 업데이트 할 필드 정의

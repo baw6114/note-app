@@ -7,7 +7,7 @@ export const main = handler(async (event) => {
     TableName: process.env.TABLE_NAME!,
     // 'Key' 삭제할 데이터의 키값 정의
     Key: {
-      userId: '123', // 사용자 ID
+        userId: event.requestContext.authorizer.iam.cognitoIdentity.identityId, // 사용자 ID
       noteId: event.pathParameters.id, // 노트 ID
     },
   };
