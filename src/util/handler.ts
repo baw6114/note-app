@@ -23,6 +23,10 @@ export default function handler(lambda: Handler) {
     return {
       statusCode,
       body: JSON.stringify(body),
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
+      },
     };
   };
 }
